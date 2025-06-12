@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laws of Software Engineering</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li><strong><a href="https://avanderw.co.za" data-tooltip="Visit avanderw.co.za"
+                            data-placement="bottom"><i data-lucide="house"></i></a></strong></li>
+            </ul>
+            <ul>
+                <li><a href="https://github.com/avanderw/laws-of-software" data-tooltip="View source code on GitHub"
+                        data-placement="bottom" aria-label="View source code on GitHub"><i data-lucide="github"></i></a>
+                </li>
+                <li><a href="https://analytics.example.com" data-tooltip="View site analytics" data-placement="bottom"
+                        aria-label="View site analytics"><i data-lucide="chart-no-axes-combined"></i></a></li>
+            </ul>
+        </nav>
+        <h1>Laws of Software Engineering</h1>
+        <p>Collection of laws, principles, and aphorisms that are widely recognized in the software engineering
+            community.</p>
+    </header>
+    <main class="container">
+        <article>
+            <h2><a href="laws/atwood.html">Atwood's Law</a></h2>
+            <blockquote>
+                Any application that can be written in JavaScript, will eventually be written in JavaScript.
+                <footer><cite> -- <a href="https://blog.codinghorror.com/all-programming-is-web-programming/">Jeff
+                            Atwood, 2009</a> </cite> </footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2><a href="laws/brooks.html">Brooks's Law</a></h2>
+            <blockquote>
+                Adding [human resources] to a late software project makes it later.
+                <footer><cite>-- <a href="https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month">Fred Brooks, 1975</a></cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Choose Boring Technology</h2>
+            <blockquote>
+                Consider how you would solve your immediate problem without adding anything new.
+                <footer><cite>-- Dan McKinley, 2015</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Conway's Law</h2>
+            <blockquote>
+                Any organization that designs a system (defined broadly) will produce a design whose structure is a copy
+                of the organization's communication structure.
+                <footer><cite>-- Melvin Conway, 1968</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Cunningham's Law</h2>
+            <blockquote>
+                The best way to get the right answer on the internet is not to ask a question; it's to post the wrong
+                answer.
+                <footer><cite>-- Ward Cunningham, 1980</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Doerr's Law</h2>
+            <blockquote>
+                We need teams of missionaries, not teams of mercenaries.
+                <footer><cite>-- John Doerr, 2015</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Fitt's Law</h2>
+            <blockquote>
+                The time to acquire a target is a function of the distance to and the size of the target.
+                <footer><cite>-- Paul Fitts, 1954</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Gall's Law</h2>
+            <blockquote>
+                A complex system that works has evolved from a simple system that worked. A complex system built from
+                scratch won't work.
+                <footer><cite>-- John Gall, 1975</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Goodhart's Law</h2>
+            <blockquote>
+                When a measure becomes a target, it ceases to be a good measure.
+                <footer><cite>-- Charles Goodhart, 1975</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Greenspun's tenth rule</h2>
+            <blockquote>
+                Any sufficiently complicated C or Fortran program contains an ad hoc, informally-specified, bug-ridden,
+                slow implementation of half of Common Lisp.
+                <footer><cite>-- Philip Greenspun</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Hofstadter's Law</h2>
+            <blockquote>
+                It always takes longer than you expect, even when you take into account Hofstadter's Law.
+                <footer><cite>-- Douglas Hofstadter, 1979</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Hyrum's Law</h2>
+            <blockquote>
+                With a sufficient number of users of an API, it does not matter what you promise in the contract: all
+                observable behaviors of your system will be depended on by somebody.
+                <footer><cite>-- Hyrum Wright, 2012</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Kerchkhoff's principle</h2>
+            <blockquote>
+                In cryptography, a system should be secure even if everything about the system, except for a small piece
+                of information - the key - is public knowledge.
+                <footer><cite>-- Auguste Kerckhoffs, 1883</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Kernighan's Law</h2>
+            <blockquote>
+                Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're
+                as clever as you can be when you write it, how will you ever debug it?
+                <footer><cite>-- Brian Kernighan, 1974</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2><a href="laws/knuth.html">Knuth's optimization principle</a></h2>
+            <blockquote>
+                Premature optimization is the root of all evil.
+                <footer><cite>-- Donald Knuth, 1974</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Law of Leaky Abstractions</h2>
+            <blockquote>
+                All non-trivial abstractions, to some degree, are leaky.
+                <footer><cite>-- Joel Spolsky, 2002</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Linus's Law</h2>
+            <blockquote>
+                Given enough eyeballs, all bugs are shallow.
+                <footer><cite>-- Linus Trovalds, 1999</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Lady Lovelace's Objection</h2>
+            <blockquote>
+                The Analytical Engine has no pretensions to originate anything. It can do whatever we know how to
+                order it to perform.
+                <footer><cite>-- Ada Lovelace, 1842</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Moore's Law</h2>
+            <blockquote>The complexity for minimum component costs has increased at a rate of roughly a factor of two
+                per year. Certainly over the short term this rate can be expected to continue, if not to increase. Over
+                the longer term, the rate of increase is a bit more uncertain, although there is no reason to believe it
+                will not remain nearly constant for at least 10 years.
+                <footer><cite>-- Gordon Moore, 1965</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Norvig's Law</h2>
+            <blockquote>
+                Any technology that surpasses 50% penetration will never double again.
+                <footer><cite>-- Peter Norvig, 1999</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Parkinson's Law</h2>
+            <blockquote>
+                Work expands so as to fill the time available for its completion.
+                <footer><cite>-- Cyril Parkinson, 1955</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Peter Principle</h2>
+            <blockquote>
+                People in a hierarchy tend to rise to "a level of respective incompetence."
+                <footer><cite>-- Laurence J. Peter, 1969</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Postel's Law</h2>
+            <blockquote>
+                Be conservative in what you send, liberal in what you accept.
+                <footer><cite>-- Jon Postel, 1980</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Shirky principle</h2>
+            <blockquote>
+                Institutions will try to preserve the problem to which they are the solution.
+                <footer><cite>-- Clay Shirky, 2010</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Tesler's Law</h2>
+            <blockquote>
+                Every application has an inherent amount of complexity that cannot be removed or hidden. Instead, it
+                must be dealt with, either in product development or in user interaction.
+                <footer>
+                    -- <cite>
+                        <a href="https://en.wikipedia.org/wiki/Law_of_conservation_of_complexity">Larry Tesler,
+                            1980</a></cite>
+                </footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Wirth's Law</h2>
+            <blockquote>
+                Software gets slower faster than hardware gets faster.
+                <footer><cite>-- Niklaus Wirth, 1995</cite></footer>
+            </blockquote>
+        </article>
+        <article>
+            <h2>Zawinski's Law</h2>
+            <blockquote>
+                Every program attempts to expand until it can read mail. Those programs which cannot so expand are
+                replaced by ones which can.
+                <footer><cite>-- James Zawinski, 1995</cite></footer>
+            </blockquote>
+        </article>
+    </main>
+    <footer class="container">
+        <p>Inspired by <a href="https://www.laws-of-software.com/">laws-of-software.com</a> 2025</p>
+    </footer>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Add scale icon to all h2 elements that don't have an icon
+        document.addEventListener('DOMContentLoaded', function () {
+            const headings = document.querySelectorAll('h2:not(:has(i))');
+            headings.forEach(heading => {
+                const icon = document.createElement('i');
+                icon.setAttribute('data-lucide', 'scale');
+                heading.prepend(icon);
+            });
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>
