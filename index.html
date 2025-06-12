@@ -11,6 +11,25 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+        }        
+        
+        main.container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1280px) {
+            main.container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            main.container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -19,8 +38,7 @@
     <header class="container">
         <nav>
             <ul>
-                <li><strong><a href="https://avanderw.co.za" data-tooltip="Visit avanderw.co.za"
-                            data-placement="bottom"><i data-lucide="house"></i></a></strong></li>
+                <li><strong><a href="https://avanderw.co.za"><i data-lucide="house"></i></a></strong></li>
             </ul>
             <ul>
                 <li><a href="https://github.com/avanderw/laws-of-software" data-tooltip="View source code on GitHub"
@@ -55,7 +73,7 @@
             <h2>Choose Boring Technology</h2>
             <blockquote>
                 Consider how you would solve your immediate problem without adding anything new.
-                <footer><cite>-- Dan McKinley, 2015</cite></footer>
+                <footer><cite>-- <a href="https://mcfunley.com/choose-boring-technology">Dan McKinley, 2015</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -63,7 +81,7 @@
             <blockquote>
                 Any organization that designs a system (defined broadly) will produce a design whose structure is a copy
                 of the organization's communication structure.
-                <footer><cite>-- Melvin Conway, 1968</cite></footer>
+                <footer><cite>-- <a href="https://www.melconway.com/Home/Conways_Law.html">Melvin Conway, 1968</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -71,21 +89,21 @@
             <blockquote>
                 The best way to get the right answer on the internet is not to ask a question; it's to post the wrong
                 answer.
-                <footer><cite>-- Ward Cunningham, 1980</cite></footer>
+                <footer><cite>-- <a href="https://archive.nytimes.com/schott.blogs.nytimes.com/2010/05/28/weekend-competition-schotts-law/">Ward Cunningham, 1980</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Doerr's Law</h2>
             <blockquote>
                 We need teams of missionaries, not teams of mercenaries.
-                <footer><cite>-- John Doerr, 2015</cite></footer>
+                <footer><cite>-- <a href="https://www.svpg.com/missionaries-vs-mercenaries/">John Doerr, 2015</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Fitt's Law</h2>
             <blockquote>
                 The time to acquire a target is a function of the distance to and the size of the target.
-                <footer><cite>-- Paul Fitts, 1954</cite></footer>
+                <footer><cite>-- <a href="https://doi.apa.org/doiLanding?doi=10.1037%2Fh0055392">Paul Fitts, 1954</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -93,14 +111,14 @@
             <blockquote>
                 A complex system that works has evolved from a simple system that worked. A complex system built from
                 scratch won't work.
-                <footer><cite>-- John Gall, 1975</cite></footer>
+                <footer><cite>-- <a href="https://www.goodreads.com/book/show/583785.The_Systems_Bible">John Gall, 1975</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Goodhart's Law</h2>
             <blockquote>
                 When a measure becomes a target, it ceases to be a good measure.
-                <footer><cite>-- Charles Goodhart, 1975</cite></footer>
+                <footer><cite>-- <a href="https://link.springer.com/chapter/10.1007/978-1-349-17295-5_4">Charles Goodhart, 1975</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -108,14 +126,14 @@
             <blockquote>
                 Any sufficiently complicated C or Fortran program contains an ad hoc, informally-specified, bug-ridden,
                 slow implementation of half of Common Lisp.
-                <footer><cite>-- Philip Greenspun</cite></footer>
+                <footer><cite>-- <a href="https://philip.greenspun.com/research/">Philip Greenspun</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Hofstadter's Law</h2>
             <blockquote>
                 It always takes longer than you expect, even when you take into account Hofstadter's Law.
-                <footer><cite>-- Douglas Hofstadter, 1979</cite></footer>
+                <footer><cite>-- <a href="https://www.goodreads.com/book/show/24113.G_del_Escher_Bach">Douglas Hofstadter, 1979</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -123,7 +141,7 @@
             <blockquote>
                 With a sufficient number of users of an API, it does not matter what you promise in the contract: all
                 observable behaviors of your system will be depended on by somebody.
-                <footer><cite>-- Hyrum Wright, 2012</cite></footer>
+                <footer><cite>-- <a href="https://www.hyrumslaw.com/">Hyrum Wright, 2012</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -131,7 +149,7 @@
             <blockquote>
                 In cryptography, a system should be secure even if everything about the system, except for a small piece
                 of information - the key - is public knowledge.
-                <footer><cite>-- Auguste Kerckhoffs, 1883</cite></footer>
+                <footer><cite>-- <a href="https://www.arcsi.fr/doc/cryptomilitaire.pdf">Auguste Kerckhoffs, 1883</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -139,28 +157,28 @@
             <blockquote>
                 Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're
                 as clever as you can be when you write it, how will you ever debug it?
-                <footer><cite>-- Brian Kernighan, 1974</cite></footer>
+                <footer><cite>-- <a href="https://www.goodreads.com/book/show/454039.The_Elements_of_Programming_Style">Brian Kernighan, 1974</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2><a href="laws/knuth.html">Knuth's optimization principle</a></h2>
             <blockquote>
                 Premature optimization is the root of all evil.
-                <footer><cite>-- Donald Knuth, 1974</cite></footer>
+                <footer><cite>-- <a href="https://dl.acm.org/doi/10.1145/356635.356640">Donald Knuth, 1974</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Law of Leaky Abstractions</h2>
             <blockquote>
                 All non-trivial abstractions, to some degree, are leaky.
-                <footer><cite>-- Joel Spolsky, 2002</cite></footer>
+                <footer><cite>-- <a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/">Joel Spolsky, 2002</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Linus's Law</h2>
             <blockquote>
                 Given enough eyeballs, all bugs are shallow.
-                <footer><cite>-- Linus Trovalds, 1999</cite></footer>
+                <footer><cite>-- <a href="https://www.goodreads.com/book/show/134825.The_Cathedral_the_Bazaar">Linus Torvalds, 1999</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -168,7 +186,7 @@
             <blockquote>
                 The Analytical Engine has no pretensions to originate anything. It can do whatever we know how to
                 order it to perform.
-                <footer><cite>-- Ada Lovelace, 1842</cite></footer>
+                <footer><cite>-- <a href="http://history-computer.com/Library/Sketch%20of%20Engine.pdf">Ada Lovelace, 1842</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -177,49 +195,49 @@
                 per year. Certainly over the short term this rate can be expected to continue, if not to increase. Over
                 the longer term, the rate of increase is a bit more uncertain, although there is no reason to believe it
                 will not remain nearly constant for at least 10 years.
-                <footer><cite>-- Gordon Moore, 1965</cite></footer>
+                <footer><cite>-- <a href="https://newsroom.intel.com/wp-content/uploads/sites/11/2018/05/moores-law-electronics.pdf">Gordon Moore, 1965</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Norvig's Law</h2>
             <blockquote>
                 Any technology that surpasses 50% penetration will never double again.
-                <footer><cite>-- Peter Norvig, 1999</cite></footer>
+                <footer><cite>-- <a href="https://norvig.com/norvigs-law.html">Peter Norvig, 1999</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Parkinson's Law</h2>
             <blockquote>
                 Work expands so as to fill the time available for its completion.
-                <footer><cite>-- Cyril Parkinson, 1955</cite></footer>
+                <footer><cite>-- <a href="https://www.economist.com/news/1955/11/19/parkinsons-law">Cyril Parkinson, 1955</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Peter Principle</h2>
             <blockquote>
                 People in a hierarchy tend to rise to "a level of respective incompetence."
-                <footer><cite>-- Laurence J. Peter, 1969</cite></footer>
+                <footer><cite>-- <a href="https://www.goodreads.com/book/show/6124265">Laurence J. Peter, 1969</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Postel's Law</h2>
             <blockquote>
                 Be conservative in what you send, liberal in what you accept.
-                <footer><cite>-- Jon Postel, 1980</cite></footer>
+                <footer><cite>-- <a href="https://tools.ietf.org/html/rfc760">Jon Postel, 1980</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Shirky principle</h2>
             <blockquote>
                 Institutions will try to preserve the problem to which they are the solution.
-                <footer><cite>-- Clay Shirky, 2010</cite></footer>
+                <footer><cite>-- <a href="https://www.goodreads.com/book/show/7614793-cognitive-surplus">Clay Shirky, 2010</a></cite></footer>
             </blockquote>
         </article>
         <article>
             <h2>Wirth's Law</h2>
             <blockquote>
                 Software gets slower faster than hardware gets faster.
-                <footer><cite>-- Niklaus Wirth, 1995</cite></footer>
+                <footer><cite>-- <a href="https://www.computer.org/csdl/magazine/co/1995/02/r2064/13rRUwInv7E">Niklaus Wirth, 1995</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -227,7 +245,7 @@
             <blockquote>
                 Every program attempts to expand until it can read mail. Those programs which cannot so expand are
                 replaced by ones which can.
-                <footer><cite>-- James Zawinski, 1995</cite></footer>
+                <footer><cite>-- <a href="https://www.jwz.org/hacks/">James Zawinski, 1995</a></cite></footer>
             </blockquote>
         </article>
     </main>
@@ -240,7 +258,7 @@
             const config = {
                 headingTooltip: 'View the report',
                 citationTooltip: 'Visit the origin material',
-                citationPlacement: 'right'
+                citationPlacement: 'bottom'
             };
             
             // STEP 1: Add scale icons to headings that don't have them
