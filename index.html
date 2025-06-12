@@ -47,7 +47,8 @@
             <h2><a href="laws/brooks.html">Brooks's Law</a></h2>
             <blockquote>
                 Adding [human resources] to a late software project makes it later.
-                <footer><cite>-- <a href="https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month">Fred Brooks, 1975</a></cite></footer>
+                <footer><cite>-- <a href="https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month">Fred Brooks,
+                            1975</a></cite></footer>
             </blockquote>
         </article>
         <article>
@@ -215,18 +216,6 @@
             </blockquote>
         </article>
         <article>
-            <h2>Tesler's Law</h2>
-            <blockquote>
-                Every application has an inherent amount of complexity that cannot be removed or hidden. Instead, it
-                must be dealt with, either in product development or in user interaction.
-                <footer>
-                    -- <cite>
-                        <a href="https://en.wikipedia.org/wiki/Law_of_conservation_of_complexity">Larry Tesler,
-                            1980</a></cite>
-                </footer>
-            </blockquote>
-        </article>
-        <article>
             <h2>Wirth's Law</h2>
             <blockquote>
                 Software gets slower faster than hardware gets faster.
@@ -244,17 +233,38 @@
     </main>
     <footer class="container">
         <p>Inspired by <a href="https://www.laws-of-software.com/">laws-of-software.com</a> 2025</p>
-    </footer>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    </footer>    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        // Add scale icon to all h2 elements that don't have an icon
         document.addEventListener('DOMContentLoaded', function () {
-            const headings = document.querySelectorAll('h2:not(:has(i))');
-            headings.forEach(heading => {
-                const icon = document.createElement('i');
-                icon.setAttribute('data-lucide', 'scale');
-                heading.prepend(icon);
+            // TOOLTIP CONFIGURATION - Edit these values to change all tooltips at once
+            const config = {
+                headingTooltip: 'View the report',
+                citationTooltip: 'Visit the origin material',
+                citationPlacement: 'right'
+            };
+            
+            // STEP 1: Add scale icons to headings that don't have them
+            document.querySelectorAll('article h2').forEach(heading => {
+                // Check if heading already has an icon
+                if (!heading.querySelector('i')) {
+                    const icon = document.createElement('i');
+                    icon.setAttribute('data-lucide', 'scale');
+                    heading.prepend(icon);
+                }
             });
+            
+            // STEP 2: Add tooltips to EXISTING heading links only
+            document.querySelectorAll('article h2 a').forEach(link => {
+                link.setAttribute('data-tooltip', config.headingTooltip);
+            });
+            
+            // STEP 3: Add tooltips to EXISTING citation links only
+            document.querySelectorAll('blockquote footer cite a').forEach(link => {
+                link.setAttribute('data-tooltip', config.citationTooltip);
+                link.setAttribute('data-placement', config.citationPlacement);
+            });
+            
+            // Initialize Lucide icons
             lucide.createIcons();
         });
     </script>
