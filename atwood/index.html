@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atwood's Law</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer data-domain="avanderw.co.za" src="https://tracking.avanderw.co.za/js/script.js"></script>
+    <style>
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 40vh;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        #boundary-cards {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .boundary-card {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .boundary-card.active {
+            border-color: var(--pico-primary-border);
+            transform: translateY(-4px);
+            box-shadow: 0 4px 6px -1px var(--pico-primary-hover), 0 2px 4px -2px var(--pico-primary-hover);
+        }
+
+        .timeline-item-dot {
+            position: absolute;
+            left: -2rem;
+            top: 2.25rem;
+            width: 1rem;
+            height: 1rem;
+            background-color: var(--pico-background-color);
+            border: 3px solid var(--pico-primary-border);
+            border-radius: 50%;
+        }
+
+        #timeline-container {
+            position: relative;
+            border-left: 2px solid var(--pico-primary-border);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        #timeline-container hgroup {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+        
+        th {
+            text-transform: uppercase;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+
+<body class="container">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">← Back to All Laws</a></li>
+            </ul>
+        </nav>
+
+        <hgroup>
+            <h1>Atwood's Law in 2025</h1>
+            <p>An interactive analysis of the statement: "Any
+                application that can be written in JavaScript, will eventually be written in JavaScript."</p>
+        </hgroup>
+    </header>
+
+    <nav id="nav-tabs" style="margin-bottom: 1rem;">
+        <button data-tab="genesis" class="nav-tab">The Law &
+            Its Genesis</button>
+        <button data-tab="evolution" class="nav-tab secondary">The
+            Evolution</button>
+        <button data-tab="dominion" class="nav-tab secondary">JavaScript's
+            Dominion</button>
+        <button data-tab="boundaries" class="nav-tab secondary">The
+            Boundaries</button>
+        <button data-tab="wasm" class="nav-tab secondary">The
+            Wasm Symbiosis</button>
+    </nav>
+
+    <main id="tab-content">
+        <section id="genesis" class="content-section active">
+            <h2>The Prophecy of the Web</h2>
+            <p>In 2009, Jeff Atwood observed a trend so
+                powerful it felt inevitable. He wasn't just talking about a programming language; he was talking
+                about the web's unmatched power as a software distribution network. This section explores the
+                original context and the core ideas that gave rise to Atwood's Law, revealing a pragmatic view
+                where market reach and user accessibility often triumph over pure engineering ideals.</p>
+            <div class="grid">
+                <article>
+                    <h3>Distribution is King</h3>
+                    <p>Atwood saw the web as "the most efficient, most pervasive, most immediate
+                        distribution network for software ever created." Any user, anywhere, was just two clicks
+                        away from using an application. This immense reach, he argued, was the primary driver of
+                        JavaScript's expansion.</p>
+                    <blockquote>"Writing
+                        Photoshop, Word, or Excel in JavaScript makes zero engineering sense, but it's
+                        inevitable. It will happen."</blockquote>
+                </article>
+                <article>
+                    <h3>The Principle of Least Power</h3>
+                    <p>A key influence was the idea that simpler, less powerful languages are often
+                        more useful. Atwood believed the web's philosophy was "doing the stupidest simplest
+                        thing that could possibly work." JavaScript's initial simplicity was not a weakness but
+                        a strength, fostering broad adoption and lowering the barrier to entry for millions of
+                        developers.</p>
+                </article>
+            </div>
+        </section>
+        <section id="evolution" class="content-section">
+            <h2>From Scripting Toy to Full-Stack Powerhouse</h2>
+            <p>Since 2009, JavaScript has transformed. Key
+                milestones have expanded its capabilities from simple browser interactions to powering entire
+                application ecosystems. This section visualizes this journey, highlighting the transformative
+                technologies and the maturation of the language itself, which turned Atwood's prediction into a
+                reality.</p>
+            <div class="grid" style="align-items: center;">
+                <article>
+                    <h3>Timeline of Transformation</h3>
+                    <div id="timeline-container">
+                        <!-- Timeline items will be injected by JS -->
+                    </div>
+                </article>
+                <article>
+                    <h3>The Rise of TypeScript</h3>
+                    <div class="chart-container" style="margin-bottom: 2rem;">
+                        <canvas id="tsAdoptionChart"></canvas>
+                    </div>
+                    <p style="text-align: center;">TypeScript's impressive growth addresses
+                        JavaScript's scaling challenges, enabling large, enterprise-grade applications.</p>
+                </article>
+            </div>
+        </section>
+        <section id="dominion" class="content-section">
+            <h2>JavaScript's Ubiquity in 2025</h2>
+            <p>Today, JavaScript's dominance is undeniable.
+                It's the most used language globally, powering the vast majority of the web and making
+                significant inroads into backend, mobile, and desktop development. This dashboard provides a
+                data-driven look at JavaScript's current reign, showcasing usage statistics and notable
+                enterprise adoptions that validate the law's core premise.</p>
+            <div class="grid">
+                <article>
+                    <h3>Developer Usage Across Domains</h3>
+                    <div class="chart-container">
+                        <canvas id="usageDomainsChart"></canvas>
+                    </div>
+                </article>
+                <article style="text-align: center;">
+                    <h3>Global Developer Use</h3>
+                    <p style="font-size: 2.5rem; font-weight: bold; color: darkgoldenrod; margin: 0.5rem 0;">62.3%</p>
+                    <p>of all developers use JavaScript</p>
+                    <hr>
+                    <h3>Professional Use</h3>
+                    <p style="font-size: 2.5rem; font-weight: bold; color: darkgoldenrod; margin: 0.5rem 0;">95%</p>
+                    <p>of professional developers use JavaScript</p>
+                </article>
+            </div>
+            <div style="text-align: center;">
+                <h3>Industry Titans Riding the JS Wave</h3>
+                <p>Major companies have migrated
+                    critical systems to Node.js, chasing scalability, performance, and the efficiency of a
+                    unified development stack.</p>
+                <div class="grid">
+                    <article>
+                        <hgroup>
+                            <p>Netflix</p>
+                            <p>From Java</p>
+                        </hgroup>
+                    </article>
+                    <article>
+                        <hgroup>
+                            <p>PayPal</p>
+                            <p>From Java</p>
+                        </hgroup>
+                    </article>
+                    <article>
+                        <hgroup>
+                            <p>Uber</p>
+                            <p>Core Services</p>
+                        </hgroup>
+                    </article>
+                    <article>
+                        <hgroup>
+                            <p>LinkedIn</p>
+                            <p>From RoR</p>
+                        </hgroup>
+                    </article>
+                    <article>
+                        <hgroup>
+                            <p>eBay</p>
+                            <p>From Java</p>
+                        </hgroup>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="boundaries" class="content-section">
+            <div>
+                <h2>Where JavaScript Hits Its Limits</h2>
+                <p>While incredibly versatile, JavaScript is not a
+                    silver bullet. The nuance in Atwood's Law lies in understanding where other technologies are not
+                    just viable, but superior. This section explores the boundaries—the domains where JavaScript
+                    "can't" or "shouldn't" be the primary choice due to inherent limitations in performance, system
+                    access, or security. Click on a domain to learn more.</p>
+                <div class="grid" style="align-items: center;">
+                    <div id="boundary-cards">
+                        <button data-boundary="performance" class="boundary-card">
+                            <h4>⚡️ Performance-Critical</h4>
+                            High-speed gaming, real-time data visualization.
+                        </button>
+                        <button data-boundary="lowlevel" class="boundary-card">
+                            <h4>⚙️ Low-Level & Embedded</h4>
+                            Operating systems, resource-constrained devices.
+                        </button>
+                        <button data-boundary="security" class="boundary-card">
+                            <h4>🛡️ Security & Sandbox</h4>
+                            Browser sandbox constraints, file system access.
+                        </button>
+                        <button data-boundary="niche" class="boundary-card">
+                            <h4>🔬 Specialized Domains</h4>
+                            Scientific computing, database management (SQL).
+                        </button>
+                    </div>
+                    <article id="boundary-details">
+                        <!-- Details will be injected here -->
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="wasm" class="content-section">
+            <div>
+                <h2>WebAssembly: The Perfect Partner</h2>
+                <p>WebAssembly (Wasm) is not a JavaScript killer;
+                    it's a powerful ally. By providing a low-level, high-performance compilation target, Wasm allows
+                    developers to run code from languages like C++ and Rust in the browser at near-native speeds.
+                    This symbiotic relationship doesn't invalidate Atwood's Law—it strengthens it by dramatically
+                    expanding the scope of what is practically achievable on the web platform, with JavaScript
+                    acting as the essential orchestrator.</p>
+                <div>
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>JavaScript</th>
+                                <th>WebAssembly</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Wasm comparison data will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+                <article>
+                    <h3>A Hybrid Future</h3>
+                    <p>The modern approach involves using both technologies for their strengths. JavaScript handles
+                        the user interface, manages browser APIs, and orchestrates the application flow.
+                        Computationally intensive tasks—like video editing, 3D rendering, or scientific
+                        simulations—are offloaded to highly optimized WebAssembly modules. This hybrid model
+                        delivers the best of both worlds: JavaScript's flexibility and ecosystem with Wasm's raw
+                        performance.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const appData = {
+                timeline: [
+                    { year: '2009', event: 'Node.js Introduction', description: 'Enabled server-side JavaScript, paving the way for full-stack development with a single language.' },
+                    { year: '2010', event: 'AngularJS Introduction', description: 'Brought MVC architecture to the frontend, enabling more organized, large-scale dynamic applications.' },
+                    { year: '2012', event: 'TypeScript Introduction', description: 'Added optional static typing, dramatically improving code quality and scalability for large projects.' },
+                    { year: '2013', event: 'React.js Release', description: 'Popularized component-based UI development, enhancing reusability and efficiency for complex interfaces.' },
+                    { year: '2015', event: 'ES6/ES2015 Standard', description: 'A major language update that introduced features like modules and async/await, making JS more powerful.' },
+                    { year: '2015', event: 'WebAssembly (Wasm) Release', description: 'Introduced a binary instruction format for near-native performance, complementing JavaScript.' }
+                ],
+                tsAdoption: {
+                    labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                    data: [12, 17, 21, 26, 28, 30, 34, 35]
+                },
+                usageDomains: {
+                    labels: ['Web Frontend', 'Web Backend', 'Mobile Apps', 'Desktop Apps'],
+                    data: [98, 64, 26, 18]
+                },
+                boundaries: {
+                    performance: {
+                        title: '⚡️ Performance-Critical Applications',
+                        description: 'For tasks demanding raw computational power and near-native speed, JavaScript\'s interpreted nature can be a bottleneck. While V8 is fast, it\'s generally outperformed by compiled languages for CPU-intensive work.',
+                        alternatives: ['WebAssembly', 'C++', 'Rust', 'Swift/Kotlin (Native Mobile)']
+                    },
+                    lowlevel: {
+                        title: '⚙️ Low-Level & Embedded Systems',
+                        description: 'JavaScript lacks direct access to low-level system resources, memory management, and hardware, which is essential for OS development or programming resource-constrained embedded devices.',
+                        alternatives: ['C', 'C++', 'Assembly', 'Rust']
+                    },
+                    security: {
+                        title: '🛡️ Security & Browser Sandbox',
+                        description: 'For user safety, in-browser JavaScript is heavily restricted. It cannot access the local file system, interact with the OS, or access hardware without explicit user permission. These are features, not bugs, but limit its use for certain application types.',
+                        alternatives: ['Native Desktop Applications', 'Server-side Languages']
+                    },
+                    niche: {
+                        title: '🔬 Specialized Domains',
+                        description: 'Certain fields have highly optimized languages and ecosystems. While JS libraries exist, domains like heavy scientific computing, statistical analysis, or database management are better served by their established, specialized languages.',
+                        alternatives: ['Python (with NumPy/SciPy)', 'R', 'SQL', 'MATLAB']
+                    }
+                },
+                wasmComparison: [
+                    { feature: 'Language Level', js: 'High-level, human-readable', wasm: 'Low-level, binary format' },
+                    { feature: 'Primary Use', js: 'UI logic, event handling, APIs', wasm: 'CPU-intensive computations' },
+                    { feature: 'Performance', js: 'Fast (JIT compiled)', wasm: 'Near-native (AOT compiled)' },
+                    { feature: 'DOM Access', js: 'Direct and easy', wasm: 'Indirect (via JS glue code)' },
+                    { feature: 'Ecosystem', js: 'Vast and mature', wasm: 'Growing and developing' },
+                    { feature: 'Memory', js: 'Automatic (Garbage Collection)', wasm: 'Manual management' }
+                ]
+            };
+
+            const tabs = document.querySelectorAll('.nav-tab');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            function switchTab(tabName) {
+                tabs.forEach(tab => {
+                    const isSelected = tab.dataset.tab === tabName;
+                    tab.classList.toggle('secondary', !isSelected);
+                });
+                contentSections.forEach(section => {
+                    section.classList.toggle('active', section.id === tabName);
+                });
+            }
+
+            document.getElementById('nav-tabs').addEventListener('click', (e) => {
+                if (e.target.matches('.nav-tab')) {
+                    switchTab(e.target.dataset.tab);
+                }
+            });
+
+            function initCharts() {
+                const tsCtx = document.getElementById('tsAdoptionChart').getContext('2d');
+                new Chart(tsCtx, {
+                    type: 'line',
+                    data: {
+                        labels: appData.tsAdoption.labels,
+                        datasets: [{
+                            label: 'TypeScript Adoption (%)',
+                            data: appData.tsAdoption.data,
+                            borderColor: '#769FCD',
+                            backgroundColor: 'rgba(118, 159, 205, 0.1)',
+                            borderWidth: 3,
+                            tension: 0.4,
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true, suggestedMax: 40, grid: { color: 'rgba(0,0,0,0.05)' } },
+                            x: { grid: { display: false } }
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+
+                const usageCtx = document.getElementById('usageDomainsChart').getContext('2d');
+                new Chart(usageCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: appData.usageDomains.labels,
+                        datasets: [{
+                            label: '% of Developers',
+                            data: appData.usageDomains.data,
+                            backgroundColor: ['#769FCD', '#8da9c4', '#a3b8d5', '#bac9e0'],
+                            borderRadius: 4,
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: { suggestedMax: 100, grid: { color: 'rgba(0,0,0,0.05)' } },
+                            y: { grid: { display: false } }
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            } function initTimeline() {
+                const container = document.getElementById('timeline-container');
+                appData.timeline.forEach(item => {
+                    const div = document.createElement('hgroup');
+                    div.innerHTML = `
+                <div class="timeline-item-dot"></div>
+                <small style="color: darkgoldenrod">${item.year}</small>
+                <small>${item.event}</small>
+                <p>${item.description}</p>
+            `;
+                    container.appendChild(div);
+                });
+            }
+
+            function initBoundaries() {
+                const cardsContainer = document.getElementById('boundary-cards');
+                const detailsContainer = document.getElementById('boundary-details'); function updateDetails(boundaryKey) {
+                    const data = appData.boundaries[boundaryKey];
+                    if (!data) return;
+
+                    detailsContainer.innerHTML = `
+                <h3>${data.title}</h3>
+                <p>${data.description}</p>
+                <h4>Primary Alternatives:</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    ${data.alternatives.map(alt => `<mark>${alt}</mark>`).join('')}
+                </div>
+            `;
+
+                    document.querySelectorAll('.boundary-card').forEach(card => {
+                        card.classList.toggle('active', card.dataset.boundary === boundaryKey);
+                    });
+                }
+
+                cardsContainer.addEventListener('click', (e) => {
+                    const card = e.target.closest('.boundary-card');
+                    if (card) {
+                        updateDetails(card.dataset.boundary);
+                    }
+                });
+
+                updateDetails('performance');
+            } function initWasmTable() {
+                const tbody = document.querySelector('#wasm table tbody');
+                appData.wasmComparison.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                <td>${item.feature}</td>
+                <td>${item.js}</td>
+                <td>${item.wasm}</td>
+            `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            initCharts();
+            initTimeline();
+            initBoundaries();
+            initWasmTable();
+        });
+    </script>
+
+</body>
+
+</html>
