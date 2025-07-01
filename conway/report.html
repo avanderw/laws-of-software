@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conway's Law</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <script defer data-domain="avanderw.co.za" src="https://tracking.avanderw.co.za/js/script.js"></script>
+</head>
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="https://avanderw.co.za"><i data-lucide="house"></i></a></li>
+                <li><a href="../index.html" data-tooltip="All Laws" data-placement="bottom"><i data-lucide="scale"></i></a></li>
+                <li><a href="index.html">Summary</a></li>
+                <li>Detail</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="report-container" class="container"></div>
+    </main>
+    <script>
+        async function loadMarkdown() {
+            const response = await fetch('./report.md');
+            const markdown = await response.text();
+            const converter = new showdown.Converter({ tables: true }); // Enable tables
+            const html = converter.makeHtml(markdown);
+            document.getElementById('report-container').innerHTML = html;
+        }
+
+        loadMarkdown();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

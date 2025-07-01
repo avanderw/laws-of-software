@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Report: The Enduring Relevance of Conway's Law</title>
+    <title>Conway's Law</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <script defer data-domain="avanderw.co.za" src="https://tracking.avanderw.co.za/js/script.js"></script>
@@ -13,24 +13,38 @@
         .strategy-card-container {
             perspective: 1000px;
             height: 280px;
+            position: relative;
         }
 
         .strategy-card {
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.7s;
+            transition: transform 0.7s ease, box-shadow 0.3s ease;
             transform-style: preserve-3d;
+            cursor: pointer;
+            transform-origin: center center;
+        }
+
+        .strategy-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .strategy-card.is-flipped {
             transform: rotateY(180deg);
         }
 
+        .strategy-card.is-flipped:hover {
+            transform: rotateY(180deg) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
         .card-face {
             position: absolute;
             width: 100%;
             height: 100%;
+            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             border-radius: 0.5rem;
             padding: 1.5rem;
@@ -40,11 +54,33 @@
             align-items: center;
             text-align: center;
             overflow-y: auto;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
         }
 
         .card-front {
             background-color: var(--pico-primary-background);
+            position: relative;
         }
+
+        .card-front::after {
+            content: "💡 Click to reveal";
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: var(--pico-primary-inverse);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .strategy-card:hover .card-front::after {
+            opacity: 0.8;
+        }
+
         .card-front h3 {
             color: var(--pico-primary-inverse);
         }
@@ -53,6 +89,23 @@
             background-color: var(--pico-background-color);
             border: 2px solid var(--pico-primary);
             transform: rotateY(180deg);
+        }
+
+        .card-back::after {
+            content: "🔄 Click to go back";
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: var(--pico-muted-color);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .strategy-card.is-flipped:hover .card-back::after {
+            opacity: 0.8;
         }
 
         /* Charts */
@@ -192,11 +245,37 @@
             background-color: var(--pico-card-background-color, var(--pico-background-color));
             border-radius: 0 0.5rem 0.5rem 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         #principle-explanation.highlight {
             background-color: var(--pico-primary-background);
             transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-left-color: var(--pico-ins-color);
+        }
+
+        #principle-explanation.flash {
+            animation: flashBorder 1s ease-out;
+        }
+
+        @keyframes flashBorder {
+            0% {
+                border-left-color: var(--pico-primary);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            25% {
+                border-left-color: var(--pico-ins-color);
+                box-shadow: 0 0 20px rgba(34, 197, 94, 0.3), 0 8px 20px rgba(0, 0, 0, 0.15);
+            }
+            75% {
+                border-left-color: var(--pico-ins-color);
+                box-shadow: 0 0 20px rgba(34, 197, 94, 0.3), 0 8px 20px rgba(0, 0, 0, 0.15);
+            }
+            100% {
+                border-left-color: var(--pico-primary);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
         }
 
         .explanation-icon {
@@ -218,6 +297,73 @@
                 opacity: 0.7;
             }
         }
+
+        /* Button feedback animation */
+        .org-btn {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .org-btn.clicked {
+            animation: buttonPulse 0.6s ease-out;
+        }
+
+        @keyframes buttonPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--pico-primary);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 10;
+            max-width: 200px;
+            text-align: center;
+        }
+
+        .scroll-indicator.show {
+            opacity: 0.9;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateY(-50%) translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-50%) translateX(0);
+                opacity: 0.9;
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .scroll-indicator {
+                right: 1rem;
+                max-width: 150px;
+                font-size: 0.7rem;
+            }
+        }
     </style>
 </head>
 
@@ -226,12 +372,10 @@
     <header class="container">
         <nav>
             <ul>
-                <li><a href="../index.html">← Back to All Laws</a></li>
-            </ul>
-            <ul>
-                <li>
-                    <h1>Conway's Law</strong>
-                </li>
+                <li><a href="https://avanderw.co.za"><i data-lucide="house"></i></a></li>
+                <li><a href="../index.html" data-tooltip="All Laws" data-placement="bottom"><i data-lucide="scale"></i></a></li>
+                <li>Summary</li>
+                <li><a href="report.html">Detail</a></li>
             </ul>
         </nav>
         <section>
@@ -286,6 +430,11 @@
                 <article id="principle-explanation"></article>
             </div>
         </section>
+
+        <!-- Scroll indicator for explanation updates -->
+        <div id="scroll-indicator" class="scroll-indicator">
+            💡 Explanation updated below!
+        </div>
 
         <section id="impact">
             <header>
@@ -346,19 +495,6 @@
             <div id="strategy-cards-container" class="grid"></div>
         </section>
     </main>
-
-    <footer class="container">
-        <nav>
-            <ul>
-                <li><a href="../index.html">← Back to All Laws</a></li>
-            </ul>
-            <ul>
-                <li>
-                    <h1>Conway's Law</strong>
-                </li>
-            </ul>
-        </nav>
-    </footer>
 
     <div id="modal" class="modal hidden">
         <div id="modal-content"></div>
@@ -505,8 +641,30 @@
                 orgChartInstance = createChart('orgChart', principleData.org, false);
                 sysChartInstance = createChart('sysChart', principleData.sys, true);
 
-                document.getElementById('principle-explanation').innerHTML = principleData.explanation;
+                const explanationElement = document.getElementById('principle-explanation');
+                const scrollIndicator = document.getElementById('scroll-indicator');
+                
+                // Add flash animation to explanation
+                explanationElement.classList.add('flash');
+                setTimeout(() => {
+                    explanationElement.classList.remove('flash');
+                }, 1000);
 
+                // Update explanation text
+                explanationElement.innerHTML = `<span class="explanation-icon">🔍</span>${principleData.explanation}`;
+
+                // Show scroll indicator if explanation is not visible
+                const explanationRect = explanationElement.getBoundingClientRect();
+                const isVisible = explanationRect.top >= 0 && explanationRect.bottom <= window.innerHeight;
+                
+                if (!isVisible) {
+                    scrollIndicator.classList.add('show');
+                    setTimeout(() => {
+                        scrollIndicator.classList.remove('show');
+                    }, 3000);
+                }
+
+                // Update button states
                 document.querySelectorAll('.org-btn').forEach(btn => {
                     if (btn.dataset.org === orgType) {
                         btn.classList.add('secondary');
@@ -520,6 +678,12 @@
 
             document.querySelectorAll('.org-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
+                    // Add visual feedback to clicked button
+                    e.target.classList.add('clicked');
+                    setTimeout(() => {
+                        e.target.classList.remove('clicked');
+                    }, 600);
+                    
                     updateCharts(e.target.dataset.org);
                 });
             });
@@ -638,9 +802,21 @@
 
             updateCharts('siloed');
             populateImpacts();
+
+            // Add click handler for scroll indicator
+            document.getElementById('scroll-indicator').addEventListener('click', () => {
+                document.getElementById('principle-explanation').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            });
         });
     </script>
 
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>
